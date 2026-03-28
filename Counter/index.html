@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Counter</h1>
+    <p id="demo" style="font-size: 25px;">0</p>
+    <div class="main-btn">
+      <button onclick="increment()">+</button>
+      <button onclick="decrement()">-</button>
+      <button onclick="saveCount()">Save</button>
+      <button onclick="resetCount()">Reset</button>
+      <button onclick="loadCount()">Load</button>
+    </div>
+    <div id="content">Wel-Come TO Counter</div>
+  </div>
+  <!-- Script for all onclick -->
+  <script>
+    let count = 0;
+    
+    let x = document.getElementById("demo")
+    let content = document.getElementById("content");
+
+    // function for display the count after any button clicked
+    function displayCount(){
+      x.innerHTML = count;
+    }
+   //function for increment
+    function increment(){
+      count++;
+      content.innerHTML = "Increment."
+      displayCount();
+    }  
+    // function for decrement
+    function decrement(){
+      count--;
+      content.innerHTML = "decrement."
+      displayCount();
+    }
+    // function for save count on local storage
+    function saveCount(){
+      localStorage.setItem("count",count);
+      content.innerHTML= count + " " + "is Saved."
+      count= 0;
+      displayCount();
+    }
+    // function for reset count
+    function resetCount(){
+      count = 0;
+      content.innerHTML = "Count is Restart Succesfully."
+      displayCount();
+    }
+    // function for load and print count
+    function loadCount(){
+      let saved = localStorage.getItem("count");
+      content.innerHTML = "Count is Load Correctly."
+      if(saved != null){
+        count = Number(saved);
+      }
+      displayCount();
+    }
+  </script>
+
+</body>
+</html>
