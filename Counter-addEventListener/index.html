@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Counter</h1>
+    <p id="demo" style="font-size: 25px;">0</p>
+    <div class="main-btn">
+      <button id="increase">+</button>
+      <button id="decrease">-</button>
+      <button id="save">Save</button>
+      <button id="reset">Reset</button>
+      <button id="load">Load</button>
+    </div>
+    <div id="content">Wel-Come TO Counter</div>
+  </div>
+  <!-- Script for all onclick -->
+  <script>
+    let count = 0;
+    
+    let demo = document.getElementById("demo")
+    let content = document.getElementById("content");
+
+    // add eventListeners to all buttons.
+    document.getElementById("increase").addEventListener("click", increaseCount);
+    document.getElementById("decrease").addEventListener("click", decreaseCount);
+    document.getElementById("save").addEventListener("click", saveCount);
+    document.getElementById("reset").addEventListener("click", resetCount);
+    document.getElementById("load").addEventListener("click", loadCount);
+
+
+    // comman function for display count
+    function displayCount(){
+      demo.innerHTML = count;
+    }
+
+    // function for increaseCount
+    function increaseCount(){
+      count++;
+      displayCount();
+      content.innerHTML = "Increment"
+    }
+
+    // function for decrement
+    function decreaseCount(){
+      if(count>0){
+        count--;
+        displayCount()
+        content.innerHTML = "Decrement"
+      }
+      else{
+      content.innerHTML = "The value is alredy 0"
+      }
+    }
+
+    // function for save count
+    function saveCount(){
+      localStorage.setItem("count" , count);
+      content.innerHTML = "Count is Saved"
+    }
+    // function for reset
+    function resetCount(){
+      count = 0;
+      displayCount()
+      content.innerHTML = "The Count is Restarted."
+    }
+    // function for Load
+    function loadCount(){
+      const num = localStorage.getItem("count");
+      if(num != null){
+        count = Number(num);
+        displayCount();
+        content.innerHTML = "Count is Loaded Succesfully."
+      }
+      else{
+        content.innerHTML = "This is not loaded."
+      }
+    }
+  </script>
+
+</body>
+</html>
