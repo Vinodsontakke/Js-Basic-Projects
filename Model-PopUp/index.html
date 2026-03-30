@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>This is Sample of Model Pop-up</h1>
+  <p>Click this button for Get Pop-up</p>
+  <button id="openBtn">Pop-Up</button>
+  <!-- HTML for model Pop-up  -->
+  <div id="model" class="model-overlay" >
+    <div class="model-box">
+      <h3>Model-box</h3>
+      <button id="closeBtn">X</button> 
+      <p>This is the sample Pop-up</p>
+    </div>
+  </div>
+  <script>
+    // contain some operational elements.
+    let openBtn = document.getElementById("openBtn")
+    let closeBtn = document.getElementById("closeBtn")
+    let model = document.getElementById("model")
+
+    // function for open model
+    function openModel(){
+      model.classList.add("show");
+    }
+    // fun for close Model
+    function closeModel(){
+      model.classList.remove("show");
+    }
+
+    // assine fun for open and Close button.
+    openBtn.addEventListener("click", openModel)
+    closeBtn.addEventListener("click",closeModel)
+
+    // call close Model when click on model
+    model.addEventListener("click",function(event){
+      if(event.target === model){
+        closeModel();
+      }
+    })
+   // call clase Model when Escape key pressed on docement.
+    document.addEventListener("keydown",function(event){
+      if(event.key === "Escape"){
+        closeModel();
+      }
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* reset CSS */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* css For center elements */
+body{
+  text-align: center;
+  margin-top: 30px;
+}
+body > p{
+  margin-top: 10px;
+}
+body > button{
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 17px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Model css */
+.model-overlay{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+}
+.model-overlay.show{
+  display: block;
+}
+.model-box{
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 10px;
+}
+.model-box > button{
+  cursor: pointer;
+}
+.model-box h3,button{
+  display: inline;
+  margin: 30px ;
+  padding: 4px;
+}
+.model-box >p{
+  margin-bottom: 20px;
+}
