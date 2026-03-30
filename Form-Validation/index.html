@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>This is Web Page With From Validation</h1>
+    <p>Enter a data and check form is getting data correctly.</p>
+
+    <form action="" id="signupFrom">
+      
+      <div class="field">
+        <label for="name">Name:</label>
+        <input id="name" type="text" placeholder="Enter Your Name">
+        <p id="nameError" class="error"></p>
+      </div>
+
+      <div class="field">
+        <label>Email</label>
+        <input id="email" type="text" placeholder="Enter valid Email">
+        <p id="emailError" class="error"></p>
+      </div>
+
+      <div class="field">
+        <label>Password:</label>
+        <input id="password" type="password" placeholder="Enter Password">
+        <p id="passwordError" class="error"></p>
+      </div>
+
+      <div class="field">
+        <label>Conform Password:</label>
+        <input id="conformPassword" type="password" placeholder="Enter password Again.">
+        <p id="conformPassError" class="error"></p>
+      </div>
+    
+      <button id="submit" class="submitBtn" type="submit">Submit</button>
+    </form>
+
+    <p id="result" style="padding-top: 10px;">Result !</p>
+  </div>
+
+
+
+  <script>
+    let form = document.getElementById("signupFrom");
+
+    let nameInput = document.getElementById("name");
+    let emailInput = document.getElementById("email");
+    let passwordInput = document.getElementById("password");
+    let conformPassInput = document.getElementById("conformPassword");
+
+    let submit = document.getElementById("submit")
+
+    let nameError = document.getElementById("nameError");
+    let emailError = document.getElementById("emailError");
+    let passError = document.getElementById("passwordError");
+    let conformPassError = document.getElementById("conformPassError");
+    let result = document.getElementById("result");
+
+
+    // fn for show error message bottom side of input field
+    function showError(el,message){
+      el.innerHTML = message;   
+    }
+
+    function clearError(el){
+      el.innerHTML = "";
+    }
+    
+
+    // fus for validate name,email,password,conformpassword.
+    function validateName(){
+      let name = nameInput.value.trim();
+      if(name.length > 2){
+        clearError(nameError)
+        return true;
+      }
+      else{
+        showError(nameError,"Emter a valid name")
+        return false;
+      }
+    }
+
+    function validateEmail(){
+      let email = emailInput.value.trim();
+      if (!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))){
+        showError(emailError,"This is Not Valid Email")
+        return false;
+      }
+      clearError(emailError);
+      return true;
+    }
+
+    function validatePassword(){
+      let password = passwordInput.value;
+      if(password.length < 8){
+        showError(passwordError,"Enter a password Minimum length of 8.")
+        return false;
+      }
+      clearError(passwordError);
+      return true;
+    }
+    function validateConformPass(){
+      let password = passwordInput.value;
+      let conformPassword = conformPassInput.value;
+      if (conformPassword === "") {
+          showError(conformPassError, "Please confirm your password.");
+          return false;
+      }
+      if( password !== conformPassword){
+        showError(conformPassError,"Enter a same password as in password section")
+        return false;
+      }
+      clearError(conformPassError);
+      return true;
+
+    }
+
+
+    // function to check all validations are return true value together
+    function validateForm(){
+      let okName = validateName();
+      let okEmail = validateEmail();
+      let okPassword = validatePassword();
+      let okConformPassword = validateConformPass();
+      return okName && okEmail && okPassword && okConformPassword;
+    }
+
+    // finel add Eventlistener to submit button.
+    form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    result.innerHTML = "";
+
+    if(validateForm()){
+      result.innerHTML="Entered Data is eligibel.";
+      result.className= "ok";
+      }
+      else{
+        result.innerHTML = "Entered Data is not eligibel.";
+        result.className = "error";
+      }
+      
+    })
+  </script>
+</body>
+</html>
