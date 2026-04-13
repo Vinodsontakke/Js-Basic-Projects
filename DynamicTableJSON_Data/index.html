@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="getTH(),getTD()" >
+  <table class="table">
+    <thead class="tableHead"></thead>
+    <tbody class="tableBody"></tbody>
+  </table>
+  
+  <script src="dummy.js"></script>
+  <script>
+    function getTH(){
+      const tableHead = Object.keys(data.users[0]);
+      const table = document.querySelector('thead');
+      let tags = "<tr>";
+      for (i = 0 ; i < tableHead.length ;i++){
+        tags += `<th>${tableHead[i]}</th>`
+      }
+      tags += "</tr>"
+      table.innerHTML = tags;
+    
+
+    }
+
+    function getTD(){
+      const tbody = document.querySelector('tbody');
+      let tags ="";
+      data.users.map(d =>{
+        tags +=
+              `<tr>
+                <td>${d.id}</td>
+                <td>${d.name}</td>
+                <td>${d.email}</td>
+                <td>${d.phone}</td>
+                </tr>`
+      })
+      tbody.innerHTML = tags;
+    }
+
+  </script>
+</body>
+</html>
