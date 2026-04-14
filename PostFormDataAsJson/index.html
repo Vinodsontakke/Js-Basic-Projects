@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Styls css -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <div class="container mt-5 mb-5 d-flex justify-content-center">
+    <div class="w-25 text-center">
+
+      <form>
+
+        <div class="form-group">
+          <label>Title:</label>
+          <input type="text" name="title" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Body:</label>
+          <input type="text" name="body" class="form-control">
+        </div> <br/>
+        <button class="btn btn-info">Post</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', handleSubmit);
+
+    function handleSubmit(event){
+      event.preventDefault();
+      let formData = new FormData(form);     // {["username","vinod"],["age","22}
+      let data = Object.fromEntries(formData); //  {username,"vinod",age:22}
+      let jsonData = JSON.stringify(data);   //  {"username","vinod","age",22}
+  
+      fetch('https://jsonplaceholder.typicode.com/posts',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:jsonData
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+    }
+  </script>
+  
+</body>
+</html>
