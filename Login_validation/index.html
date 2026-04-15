@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="form-container">
+      <div class="header">
+        <h2>Welcome</h2>
+        <br>
+        <i class="fa fa-user-circle"></i>
+      </div>
+      <form onsubmit="return validation()" name="f1">
+        <div class="form">
+          <label>email</label>
+          <input type="email" name="email" placeholder="enter email">
+          <span id="email_error"></span>
+          <label>password</label>
+          <input type="password" name="password" placeholder="enter password">
+          <span id="password_error"></span>    
+          <button type="submit">Log in</button>      
+        </div>
+      </form>
+      <div class="footer">
+        <p>Don't have an account? <a href="#">Sing up</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
