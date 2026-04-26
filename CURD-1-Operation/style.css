@@ -1,0 +1,105 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Center layout */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Container */
+.container {
+  width: 800px;
+}
+
+/* Card */
+.container > div {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* 🔥 Form in one line */
+.create_form,.update_form{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.update_form{
+  display:none;
+}
+
+/* Labels */
+.create_form label , .update_form label{
+  font-size: 14px;
+}
+
+/* Inputs */
+.create_form input , .update_form input{
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 180px;
+}
+
+/* Button */
+.create_form button ,.update_form button{
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #667eea;
+  color: white;
+  cursor: pointer;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header */
+thead {
+  background: #667eea;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Row border */
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Buttons inside table */
+td button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* Edit */
+td button:first-child {
+  background: #38a169;
+  color: white;
+}
+
+/* Delete */
+td button:last-child {
+  background: #e53e3e;
+  color: white;
+}
