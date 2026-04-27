@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generating PDF</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+  </script>
+</head>
+<body>
+  <input type="button" value="createPDF" onclick="generatePDF()">
+  <script>
+    function generatePDF(){
+      const {jsPDF} = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.text(100,20,"This is Header");
+      doc.text(10,20 ,"Vinod Sanjay Sontakke");
+      doc.save("new File.pdf");
+    }
+  </script>
+</body>
+</html>

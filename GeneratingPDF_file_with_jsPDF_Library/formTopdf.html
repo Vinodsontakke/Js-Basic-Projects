@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form to PDF</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body{
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    input, textarea{
+      display: block;
+      margin-bottom: 15px;
+      width: 300px;
+      padding: 8px;
+    }
+
+    button{
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>User Form</h2>
+
+  <input type="text" id="name" placeholder="Enter Name">
+  <input type="email" id="email" placeholder="Enter Email">
+  <input type="text" id="mobile" placeholder="Enter Mobile Number">
+  <textarea id="address" placeholder="Enter Address"></textarea>
+
+  <button onclick="generatePDF()">Generate PDF</button>
+
+  <script>
+
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      // Get values from form
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const mobile = document.getElementById("mobile").value;
+      const address = document.getElementById("address").value;
+
+      // Add content to PDF
+      doc.setFontSize(18);
+      doc.text("User Information", 20, 20);
+
+      doc.setFontSize(12);
+      doc.text(`Name: ${name}`, 20, 40);
+      doc.text(`Email: ${email}`, 20, 50);
+      doc.text(`Mobile: ${mobile}`, 20, 60);
+      doc.text(`Address: ${address}`, 20, 70);
+
+      // Save PDF
+      doc.save("user-details.pdf");
+    }
+  </script>
+
+</body>
+</html>
